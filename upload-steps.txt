@@ -1,0 +1,19 @@
+Upload steps to PyPI:
+
+1) BUILD
+
+    in venv:
+
+    python -m build
+
+
+2) UPLOAD
+
+    For testing:
+
+    twine upload -r testpypi dist/*
+
+
+    For actual PyPI:
+
+    twine upload -r pypi dist/*

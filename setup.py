@@ -1,6 +1,11 @@
 from setuptools import find_packages, setup
 from adaptivecardsng import __version__ as version
 
+# read the contents of your README file
+from pathlib import Path
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
+
 setup(
     name='adaptivecardsng',
     version=version,
@@ -9,11 +14,8 @@ setup(
     author='Thomas Ward',
     author_email='teward@thomas-ward.net',
     description="Python library to generate AdaptiveCard objects and their JSON code.",
-    long_description="AdaptiveCards are being used by Microsoft for various frameworks like bot " \
-                     "message cards and the Bot framework, but also for Teams messages and " \
-                     "submission, as well as other uses of the AdaptiveCard spec.  The full spec " \
-                     "is located at https://adaptivecards.io/explorer/ and is more or less " \
-                     "fully implemented here.",
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     license='GPLv3+',
     classifiers=[
         'Development Status :: 3 - Alpha',
