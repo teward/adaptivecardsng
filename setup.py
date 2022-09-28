@@ -34,5 +34,6 @@ setup(
         'Programming Language :: Python :: 3.10',
         'Topic :: Communications',
         'Topic :: Software Development :: Libraries'
-    ]
+    ],
+    python_requires='>=3.7.0'
 )
