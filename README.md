@@ -1,6 +1,7 @@
-## adaptivecardsng - Python Library for Easy Building of AdaptiveCards Object JSON
+## adaptivecardsng - Python Library for Easy Building of Adaptive Cards Object JSON
+**This project is licensed under GPL 3.0 and later**
 
-### What is/are Adaptive Cards?
+### What are Adaptive Cards?
 Per the documentation at https://adaptivecards.io (a Microsoft website), Adaptive Cards 
 are best described as follows:
 
@@ -12,6 +13,9 @@ are best described as follows:
 
 This is heavily useful in automated bot response applications, etc. including those 
 built upon and working with Microsoft Teams and the Microsoft bot frameworks.
+
+This way, you can use Python object-oriented programming to easily generate the JSON for objects 
+and cards without ever having to touch the JSON underneath.
 
 ### Aren't there several Adaptive Cards frameworks already for Python?
 
@@ -47,9 +51,130 @@ for type hinting, and we have that there intentionally.
 There are some differences between this library and `adaptivecards`, there are some distinct 
 differences.
 
-Because a code sample is more useful to understand, we'll write one here.
+Because a code sample is more useful to understand, we'll write one here (this is also in the file 
+`examples/readme_example.py`):
 
 ```python
+from adaptivecardsng.elements import TextBlock, FontType, FontSize, FontWeight
+from adaptivecardsng.containers import Container, ColumnSet, Column
+from adaptivecardsng.cards import AdaptiveCard
 
+card = AdaptiveCard()
+card.body = [
+    Container(items=[
+        TextBlock(text=f'Adaptive Cards Example',
+                  font_weight=FontWeight.bolder, font_size=FontSize.large, wrap=True),
+        ColumnSet(columns=[
+            Column(width='stretch',
+                   items=[
+                       TextBlock(text="author", font_weight=FontWeight.bolder, wrap=True),
+                       TextBlock(text='version', font_weight=FontWeight.bolder, wrap=True)
+                   ]),
+            Column(width='stretch',
+                   items=[
+                       TextBlock(text="Thomas Ward", wrap=True),
+                       TextBlock(text="0.0.0-alpha.0", wrap=True,
+                                 font_type=FontType.monospace)
+                   ])
+        ])
+    ]),
+    TextBlock(text="more information available at "
+                   "[https://github.com/teward/adaptivecardsng]"
+                   "(https://github.com/teward/adaptivecardsng)",
+              subtle=True, wrap=True, font_size=FontSize.small)
+]
 
+print(str(card))
 ```
+
+This generates this output:
+
+```json
+{
+  "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "items": [
+        {
+          "size": "large",
+          "style": "default",
+          "text": "Adaptive Cards Example",
+          "type": "TextBlock",
+          "weight": "bolder",
+          "wrap": true
+        },
+        {
+          "columns": [
+            {
+              "items": [
+                {
+                  "style": "default",
+                  "text": "author",
+                  "type": "TextBlock",
+                  "weight": "bolder",
+                  "wrap": true
+                },
+                {
+                  "style": "default",
+                  "text": "version",
+                  "type": "TextBlock",
+                  "weight": "bolder",
+                  "wrap": true
+                }
+              ],
+              "width": "stretch"
+            },
+            {
+              "items": [
+                {
+                  "style": "default",
+                  "text": "Thomas Ward",
+                  "type": "TextBlock",
+                  "wrap": true
+                },
+                {
+                  "fontType": "monospace",
+                  "style": "default",
+                  "text": "0.0.0-alpha.0",
+                  "type": "TextBlock",
+                  "wrap": true
+                }
+              ],
+              "width": "stretch"
+            }
+          ],
+          "type": "ColumnSet"
+        }
+      ],
+      "type": "Container"
+    },
+    {
+      "isSubtle": true,
+      "size": "small",
+      "style": "default",
+      "text": "more information available at [https://github.com/teward/adaptivecardsng](https://github.com/teward/adaptivecardsng)",
+      "type": "TextBlock",
+      "wrap": true
+    }
+  ],
+  "type": "AdaptiveCard",
+  "version": "1.5"
+}
+```
+
+And that in turn, when rendered in Teams after properly being transmitted and formatted as a 
+Teams-compatible message looks something like this:
+
+(IMAGE)
+
+<!--
+### Installation
+
+While you can always download this from GitHub and run the installer, we actually do have this 
+uploaded to PyPI.  So you can install it with code as simple as:
+
+    python3 -m pip install adaptivecardsng
+
+# We don't have installation instructions yet because this is in devel.
+-->
+

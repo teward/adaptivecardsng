@@ -1,7 +1,6 @@
 from adaptivecardsng.elements import TextBlock, FontType, FontSize, FontWeight
 from adaptivecardsng.containers import Container, ColumnSet, Column
 from adaptivecardsng.cards import AdaptiveCard
-from adaptivecardsng.messages.teams import TeamsAdaptiveMessage
 
 card = AdaptiveCard()
 card.body = [
@@ -23,11 +22,9 @@ card.body = [
         ])
     ]),
     TextBlock(text="more information available at "
-                   "(the GitHub Repository for adaptivecardsng)"
-                   "[https://github.com/teward/adaptivecardsng]",
+                   "[https://github.com/teward/adaptivecardsng]"
+                   "(https://github.com/teward/adaptivecardsng)",
               subtle=True, wrap=True, font_size=FontSize.small)
 ]
 
-message = TeamsAdaptiveMessage(card)
-
-print(str(message))
+print(str(card))
