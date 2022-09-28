@@ -1,6 +1,8 @@
 ## adaptivecardsng - Python Library for Easy Building of Adaptive Cards Object JSON
 **This project is licensed under GPL 3.0 and later**
 
+**This project is currently under development, and does NOT have a released version yet.**
+
 ### What are Adaptive Cards?
 Per the documentation at https://adaptivecards.io (a Microsoft website), Adaptive Cards 
 are best described as follows:
