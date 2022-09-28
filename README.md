@@ -179,3 +179,16 @@ uploaded to PyPI.  So you can install it with code as simple as:
 # We don't have installation instructions yet because this is in devel.
 -->
 
+### Authors
+
+See AUTHORS file for the list of authors and contributors.
+
+### Credits
+
+Adaptive Cards appear to be a framework developed by Microsoft - [https://adaptivecards.io/](https://adaptivecards.io/)
+
+Code samples here in the README are inspired by the example provided in the [README of 
+the older adaptivecards library](https://github.com/huuhoa/adaptivecards/blob/main/README.md) by 
+[Huu Hoa NGUYEN](https://github.com/huuhoa).
+
+Teams rendering is via Microsoft Teams, a Microsoft Product, using the Incoming Webhook mechanism.

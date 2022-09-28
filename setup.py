@@ -6,9 +6,6 @@ setup(
     version=version,
     packages=find_packages(),
     include_package_data=True,
-    install_requires=[
-        'typing'
-    ],
     author='Thomas Ward',
     author_email='teward@thomas-ward.net',
     description="Python library to generate AdaptiveCard objects and their JSON code.",

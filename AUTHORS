@@ -1,0 +1,20 @@
+This file details the authors and contributors to the `adaptivecardng` project.
+
+Note that this file is divided into AUTHORS and CONTRIBUTORS.
+
+AUTHORS are people who were instrumental in the original design of this library, except
+where they are given shout-outs in the README file under "Credits".
+
+CONTRIBUTORS are individuals that at some level have committed code to the project.
+
+This file should only be revised by an AUTHOR, or with a pull request.
+
+------
+
+AUTHORS:
+ - Thomas Ward <teward@thomas-ward.net>
+   * Responsible for the full complete writeup here of Adaptive Cards support in OOP format,
+     with Enums; Github Repository Owner; PyPI publisher for the library.
+
+CONTRIBUTORS:
+ - (None yet)
