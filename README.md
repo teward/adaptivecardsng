@@ -1,6 +1,6 @@
-# adaptivecardsng - Python Library for Easy Building of AdaptiveCards Object JSON
+## adaptivecardsng - Python Library for Easy Building of AdaptiveCards Object JSON
 
-## What is/are Adaptive Cards?
+### What is/are Adaptive Cards?
 Per the documentation at https://adaptivecards.io (a Microsoft website), Adaptive Cards 
 are best described as follows:
 
@@ -13,7 +13,7 @@ are best described as follows:
 This is heavily useful in automated bot response applications, etc. including those 
 built upon and working with Microsoft Teams and the Microsoft bot frameworks.
 
-## Aren't there several Adaptive Cards frameworks already for Python?
+### Aren't there several Adaptive Cards frameworks already for Python?
 
 Okay, you got us - this is Yet Another Implementation of Adaptive Cards (AC for short below).
 
@@ -23,7 +23,7 @@ on PyPI which has not been updated since AC version 1.2.  This set of code funct
 adaptivecardsng - is a Python Object-Oriented design of AC development and creation, and 
 follows the spec at https://adaptivecards.io/explorer/ as closely as it can for the current release.
 
-## Which Adaptive Cards spec version is this library written for?
+### Which Adaptive Cards spec version is this library written for?
 
 As of right now while you're reading this document, this library is written to be AC 1.5 compliant.
 
@@ -33,6 +33,23 @@ here so that you can more easily choose options without having to remember all t
 also makes sure that you don't have any type of unrecognized arguments in the JSON when sending it 
 off to endpoints.
 
-## So, this is entirely Python, right?  No extra dependencies?
+### So, this is entirely Python, right?  No extra dependencies?
 
-Yep, fully written in Python.  Of course, it's got a minimum support of Python 
+Yep, fully written in Python.  Specifically, Python 3, with support for Python 3.7 and newer.
+
+Don't ask for older Python versions, please, because we use certain type definitions and type
+hinting that don't work with older versions of Python before 3.7.  This is due to what the Python 
+versions of `__future__` support and older than 3.7 does not support the type annotations we use 
+for type hinting, and we have that there intentionally.
+
+### Usage
+
+There are some differences between this library and `adaptivecards`, there are some distinct 
+differences.
+
+Because a code sample is more useful to understand, we'll write one here.
+
+```python
+
+
+```

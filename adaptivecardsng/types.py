@@ -1,9 +1,9 @@
+from __future__ import annotations
+
 from .base import BaseObject
 from .enums import ImageFillMode, HorizontalAlignment, VerticalAlignment
 
 from .actions import Execute
-
-from typing import Optional, Dict, List
 
 
 # Types are object definitions which can be used in many places -
@@ -18,9 +18,9 @@ from typing import Optional, Dict, List
 # Enums are completely static definitions.
 
 class BackgroundImage(BaseObject):
-    def __init__(self, url: str, fill_mode: Optional[ImageFillMode] = None,
-                 horizontal_alignment: Optional[HorizontalAlignment] = None,
-                 vertical_alignment: Optional[VerticalAlignment] = None,
+    def __init__(self, url: str, fill_mode: (ImageFillMode | None) = None,
+                 horizontal_alignment: (HorizontalAlignment | None) = None,
+                 vertical_alignment: (VerticalAlignment | None) = None,
                  *args, **kwargs) -> None:
         super(BackgroundImage, self).__init__(*args, **kwargs)
         self.url = url
@@ -36,8 +36,8 @@ class BackgroundImage(BaseObject):
 
 
 class Refresh(BaseObject):
-    def __init__(self, execute: Optional[Execute] = None,
-                 user_ids: Optional[Dict[str]] = None,
+    def __init__(self, execute: (Execute | None) = None,
+                 user_ids: (dict[str] | None) = None,
                  *args, **kwargs) -> None:
         super(Refresh, self).__init__(*args, **kwargs)
         if execute:
@@ -56,8 +56,8 @@ class TokenExchangeResource(BaseObject):
 
 
 class AuthCardButton(BaseObject):
-    def __init__(self, type: str, value: str, title: Optional[str] = None,
-                 image: Optional[str] = None, *args, **kwargs):
+    def __init__(self, type: str, value: str, title: (str | None) = None,
+                 image: (str | None) = None, *args, **kwargs):
         super(AuthCardButton, self).__init__(*args, **kwargs)
         self.type = type
         self.value = value
@@ -69,9 +69,9 @@ class AuthCardButton(BaseObject):
 
 
 class Authentication(BaseObject):
-    def __init__(self, text: Optional[str] = None, connection_name: Optional[str] = None,
-                 token_exchange_resource: Optional[TokenExchangeResource] = None,
-                 buttons: Optional[List[AuthCardButton]] = None, *args, **kwargs) -> None:
+    def __init__(self, text: (str | None) = None, connection_name: (str | None) = None,
+                 token_exchange_resource: (TokenExchangeResource | None) = None,
+                 buttons: (list[AuthCardButton] | None) = None, *args, **kwargs) -> None:
         super(Authentication, self).__init__(*args, **kwargs)
         if text:
             self.text = text

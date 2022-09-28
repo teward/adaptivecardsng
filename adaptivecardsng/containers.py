@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .base import BaseAction, BaseSet, BaseContainer, BaseElement, BaseObject
 
 from .enums import BlockElementHeight, Spacing, ContainerStyle
@@ -9,19 +11,17 @@ from .actions import Execute, OpenUrl, Submit, ToggleVisibility
 
 from .types import BackgroundImage
 
-from typing import Optional, List, Iterable, Union
-
 
 class ActionSet(BaseSet):
     def __init__(self,
                  # ActionSet Items
-                 actions: List[BaseAction],
+                 actions: list[BaseAction],
                  # Inherited from BaseSet
-                 fallback: Optional[str] = None,
-                 height: Optional[str, BlockElementHeight] = None,
-                 separator: Optional[bool] = None, spacing: Optional[str, Spacing] = None,
-                 id: Optional[str] = None, visible: bool = True,
-                 requires: Optional[dict] = None, *args, **kwargs) -> None:
+                 fallback: (str | None) = None,
+                 height: (str | BlockElementHeight | None) = None,
+                 separator: (bool | None) = None, spacing: (str | Spacing | None) = None,
+                 id: (str | None) = None, visible: bool = True,
+                 requires: (dict | None) = None, *args, **kwargs) -> None:
         super(ActionSet, self).__init__("ActionSet", fallback, height, separator, spacing, id,
                                         visible, requires, *args, **kwargs)
         self.actions = actions
@@ -30,19 +30,19 @@ class ActionSet(BaseSet):
 class Container(BaseContainer):
     def __init__(self,
                  # Container Items
-                 items: List[BaseElement],
-                 select_action: Optional[Union[Execute, OpenUrl, Submit, ToggleVisibility]] = None,
-                 style: Optional[ContainerStyle] = None,
-                 vertical_content_alignment: Optional[VerticalAlignment] = None,
-                 bleed: Optional[bool] = None,
-                 background_image: Optional[BackgroundImage] = None,
-                 min_height: Optional[str] = None, rtl: Optional[bool] = None,
+                 items: list[BaseElement],
+                 select_action: (Execute | OpenUrl | Submit | ToggleVisibility | None) = None,
+                 style: (ContainerStyle | None) = None,
+                 vertical_content_alignment: (VerticalAlignment | None) = None,
+                 bleed: (bool | None) = None,
+                 background_image: (BackgroundImage | None) = None,
+                 min_height: (str | None) = None, rtl: (bool | None) = None,
                  # Inherited from BaseContainer
-                 fallback: Optional[str] = None,
-                 height: Optional[str, BlockElementHeight] = None,
-                 separator: Optional[bool] = None, spacing: Optional[str, Spacing] = None,
-                 id: Optional[str] = None, visible: bool = True,
-                 requires: Optional[dict] = None, *args, **kwargs) -> None:
+                 fallback: (str | None) = None,
+                 height: (str | BlockElementHeight | None) = None,
+                 separator: (bool | None) = None, spacing: (str | Spacing | None) = None,
+                 id: (str | None) = None, visible: bool = True,
+                 requires: (dict | None) = None, *args, **kwargs) -> None:
         super(Container, self).__init__("Container", fallback, height, separator, spacing, id,
                                         visible, requires, *args, **kwargs)
         self.items = items
@@ -63,19 +63,19 @@ class Container(BaseContainer):
 
 
 class Column(BaseObject):
-    def __init__(self, items: Optional[List[BaseElement]] = None,
-                 background_image: Optional[str, BackgroundImage] = None,
-                 bleed: Optional[bool] = None, fallback: Optional[str] = None,
-                 min_height: Optional[str] = None, rtl: Optional[bool] = None,
-                 separator: Optional[bool] = None, spacing: Optional[Spacing] = None,
-                 select_action: Optional[Union[Execute, OpenUrl, Submit, ToggleVisibility]] = None,
-                 style: Optional[ContainerStyle] = None,
-                 vertical_content_alignment: Optional[VerticalAlignment] = None,
-                 width: Optional[int, str] = None,
+    def __init__(self, items: (list[BaseElement] | None) = None,
+                 background_image: (str | BackgroundImage | None) = None,
+                 bleed: (bool | None) = None, fallback: (str | None) = None,
+                 min_height: (str | None) = None, rtl: (bool | None) = None,
+                 separator: (bool | None) = None, spacing: (Spacing | None) = None,
+                 select_action: (Execute | OpenUrl | Submit | ToggleVisibility | None) = None,
+                 style: (ContainerStyle | None) = None,
+                 vertical_content_alignment: (VerticalAlignment | None) = None,
+                 width: (int | str | None) = None,
                  # Note: this SHOULD be part of a base class but doesn't fit into
                  # any current base objects.  So, we have defined this as its own object.
-                 id: Optional[str] = None, visible: bool = True,
-                 requires: Optional[dict] = None, *args, **kwargs) -> None:
+                 id: (str | None) = None, visible: bool = True,
+                 requires: (dict | None) = None, *args, **kwargs) -> None:
         super(Column, self).__init__(*args, **kwargs)
         if items:
             self.items = items
@@ -112,18 +112,18 @@ class Column(BaseObject):
 class ColumnSet(BaseSet):
     def __init__(self,
                  # ColumnSet Items
-                 columns: Optional[List[Column]] = None,
-                 select_action: Optional[Union[Execute, OpenUrl, Submit, ToggleVisibility]] = None,
-                 style: Optional[ContainerStyle] = None,
-                 bleed: Optional[bool] = None,
-                 min_height: Optional[str] = None,
-                 horizontal_alignment: Optional[HorizontalAlignment] = None,
+                 columns: (list[Column] | None) = None,
+                 select_action: (Execute | OpenUrl | Submit | ToggleVisibility | None) = None,
+                 style: (ContainerStyle | None) = None,
+                 bleed: (bool | None) = None,
+                 min_height: (str | None) = None,
+                 horizontal_alignment: (HorizontalAlignment | None) = None,
                  # Inherited from BaseSet
-                 fallback: Optional[str] = None,
-                 height: Optional[str, BlockElementHeight] = None,
-                 separator: Optional[bool] = None, spacing: Optional[str, Spacing] = None,
-                 id: Optional[str] = None, visible: bool = True,
-                 requires: Optional[dict] = None, *args, **kwargs) -> None:
+                 fallback: (str | None) = None,
+                 height: (str | BlockElementHeight | None) = None,
+                 separator: (bool | None) = None, spacing: (str | Spacing | None) = None,
+                 id: (str | None) = None, visible: bool = True,
+                 requires: (dict | None) = None, *args, **kwargs) -> None:
         super(ColumnSet, self).__init__("ColumnSet", fallback, height, separator, spacing, id,
                                         visible, requires, *args, **kwargs)
         if columns:
@@ -150,13 +150,13 @@ class Fact(BaseObject):
 class FactSet(BaseSet):
     def __init__(self,
                  # FactSet Items
-                 facts: List[Fact],
+                 facts: list[Fact],
                  # Inherited Items
-                 fallback: Optional[str] = None,
-                 height: Optional[str, BlockElementHeight] = None,
-                 separator: Optional[bool] = None, spacing: Optional[str, Spacing] = None,
-                 id: Optional[str] = None, visible: bool = True,
-                 requires: Optional[dict] = None, *args, **kwargs) -> None:
+                 fallback: (str | None) = None,
+                 height: (str, BlockElementHeight | None) = None,
+                 separator: (bool | None) = None, spacing: (str, Spacing | None) = None,
+                 id: (str | None) = None, visible: bool = True,
+                 requires: (dict | None) = None, *args, **kwargs) -> None:
         super(FactSet, self).__init__("FactSet", fallback, height, separator, spacing, id,
                                       visible, requires, *args, **kwargs)
         self.facts = facts
@@ -165,13 +165,13 @@ class FactSet(BaseSet):
 class ImageSet(BaseSet):
     def __init__(self,
                  # ImageSet Items
-                 images: List[Image], image_size: Optional[ImageSize] = None,
+                 images: list[Image], image_size: (ImageSize | None) = None,
                  # Inherited Items
-                 fallback: Optional[str] = None,
-                 height: Optional[str, BlockElementHeight] = None,
-                 separator: Optional[bool] = None, spacing: Optional[str, Spacing] = None,
-                 id: Optional[str] = None, visible: bool = True,
-                 requires: Optional[dict] = None, *args, **kwargs) -> None:
+                 fallback: (str | None) = None,
+                 height: (str | BlockElementHeight | None) = None,
+                 separator: (bool | None) = None, spacing: (str | Spacing | None) = None,
+                 id: (str | None) = None, visible: bool = True,
+                 requires: (dict | None) = None, *args, **kwargs) -> None:
         super(ImageSet, self).__init__("ImageSet", fallback, height, separator, spacing, id,
                                        visible, requires, *args, **kwargs)
         self.images = images
@@ -180,14 +180,14 @@ class ImageSet(BaseSet):
 
 
 class TableCell(BaseContainer):
-    def __init__(self, items: List[BaseElement],
-                 select_action: Optional[Union[Execute, OpenUrl, Submit, ToggleVisibility]] = None,
-                 style: Optional[ContainerStyle] = None,
-                 vertical_content_alignment: Optional[VerticalAlignment] = None,
-                 bleed: Optional[bool] = None,
-                 background_image: Optional[str, BackgroundImage] = None,
-                 min_height: Optional[str] = None,
-                 rtl: Optional[bool] = None, *args, **kwargs):
+    def __init__(self, items: list[BaseElement],
+                 select_action: (Execute | OpenUrl | Submit | ToggleVisibility | None) = None,
+                 style: (ContainerStyle | None) = None,
+                 vertical_content_alignment: (VerticalAlignment | None) = None,
+                 bleed: (bool | None) = None,
+                 background_image: (str | BackgroundImage | None) = None,
+                 min_height: (str | None) = None,
+                 rtl: (bool | None) = None, *args, **kwargs):
         super(TableCell, self).__init__(*args, **kwargs)
         self.items = items
         if select_action:
@@ -207,10 +207,10 @@ class TableCell(BaseContainer):
 
 
 class TableRow(BaseObject):
-    def __init__(self, cells: Optional[List[TableCell]] = None,
-                 style: Optional[ContainerStyle] = None,
-                 horizontal_cell_content_alignment: Optional[HorizontalAlignment] = None,
-                 vertical_cell_content_alignment: Optional[VerticalAlignment] = None,
+    def __init__(self, cells: (list[TableCell] | None) = None,
+                 style: (ContainerStyle | None) = None,
+                 horizontal_cell_content_alignment: (HorizontalAlignment | None) = None,
+                 vertical_cell_content_alignment: (VerticalAlignment | None) = None,
                  *args, **kwargs):
         super(TableRow, self).__init__(*args, **kwargs)
         self.type = 'TableRow'
@@ -227,19 +227,19 @@ class TableRow(BaseObject):
 class Table(BaseContainer):
     def __init__(self,
                  # Table specific items
-                 columns: Optional[Iterable] = None,
-                 rows: Optional[TableRow] = None,
-                 first_row_as_header: Optional[bool] = None,
-                 show_grid_lines: Optional[bool] = None,
-                 grid_style: Optional[ContainerStyle] = None,
-                 horizontal_cell_content_alignment: Optional[HorizontalAlignment] = None,
-                 vertical_cell_content_alignment: Optional[VerticalAlignment] = None,
+                 columns: (list | dict | None) = None,
+                 rows: (TableRow | None) = None,
+                 first_row_as_header: (bool | None) = None,
+                 show_grid_lines: (bool | None) = None,
+                 grid_style: (ContainerStyle | None) = None,
+                 horizontal_cell_content_alignment: (HorizontalAlignment | None) = None,
+                 vertical_cell_content_alignment: (VerticalAlignment | None) = None,
                  # Inherited from BaseContainer
-                 fallback: Optional[str] = None,
-                 height: Optional[str, BlockElementHeight] = None,
-                 separator: Optional[bool] = False, spacing: Optional[str, Spacing] = None,
-                 id: Optional[str] = None, visible: bool = True,
-                 requires: Optional[dict] = None, *args, **kwargs) -> None:
+                 fallback: (str | None) = None,
+                 height: (str | BlockElementHeight | None) = None,
+                 separator: (bool | None) = False, spacing: (str | Spacing | None) = None,
+                 id: (str | None) = None, visible: bool = True,
+                 requires: (dict | None) = None, *args, **kwargs) -> None:
         super(Table, self).__init__("Container", fallback, height, separator, spacing, id,
                                     visible, requires, *args, **kwargs)
         if columns:

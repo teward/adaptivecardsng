@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .base import BaseElement, BaseObject
 
 from .enums import Colors, FontType, HorizontalAlignment
@@ -7,26 +9,24 @@ from .enums import ImageStyle
 
 from .actions import Execute, OpenUrl, Submit, ToggleVisibility
 
-from typing import Optional, List, Union
-
 
 class TextBlock(BaseElement):
     def __init__(self,
                  # Items from TextBlock
-                 text: str, color: Optional[Colors] = None, font_type: Optional[FontType] = None,
-                 horizontal_alignment: Optional[HorizontalAlignment] = None,
-                 subtle: Optional[bool] = None, max_lines: Optional[int] = None,
-                 font_size: Optional[FontSize] = None,
-                 font_weight: Optional[FontWeight] = None,
-                 wrap: Optional[bool] = None,
-                 style: Union[str, TextBlockStyle] = TextBlockStyle.default,
+                 text: str, color: (Colors | None) = None, font_type: (FontType | None) = None,
+                 horizontal_alignment: (HorizontalAlignment | None) = None,
+                 subtle: (bool | None) = None, max_lines: (int | None) = None,
+                 font_size: (FontSize | None) = None,
+                 font_weight: (FontWeight | None) = None,
+                 wrap: (bool | None) = None,
+                 style: (str | TextBlockStyle) = TextBlockStyle.default,
                  # Inherited from BaseElement - except "type" which is hardcoded in
                  # super call.
-                 fallback: Optional[str] = None,
-                 height: Optional[Union[str, BlockElementHeight]] = None,
-                 separator: Optional[bool] = None,
-                 spacing: Optional[Union[str, Spacing]] = None, visible: bool = True,
-                 id: Optional[str] = None, requires: Optional[dict] = None,
+                 fallback: (str | None) = None,
+                 height: (str | BlockElementHeight | None) = None,
+                 separator: (bool | None) = None,
+                 spacing: (str, Spacing | None) = None, visible: bool = True,
+                 id: (str | None) = None, requires: (dict | None) = None,
                  *args, **kwargs) -> None:
 
         super().__init__("TextBlock", fallback, height, separator, spacing,
@@ -55,19 +55,19 @@ class TextBlock(BaseElement):
 class Image(BaseElement):
     def __init__(self,
                  # Items from Image
-                 url: str, alt_text: Optional[str] = None,
-                 background_color: Optional[str] = None,
-                 height: Optional[Union[str, BlockElementHeight]] = None,
-                 horizontal_alignment: Optional[HorizontalAlignment] = None,
-                 select_action: Optional[Union[Execute, OpenUrl, Submit, ToggleVisibility]] = None,
-                 size: Optional[ImageSize] = None, style: Optional[ImageStyle] = None,
-                 width: Optional[str] = None,
+                 url: str, alt_text: (str | None) = None,
+                 background_color: (str | None) = None,
+                 height: (str | BlockElementHeight | None) = None,
+                 horizontal_alignment: (HorizontalAlignment | None) = None,
+                 select_action: (Execute | OpenUrl | Submit | ToggleVisibility | None) = None,
+                 size: (ImageSize | None) = None, style: (ImageStyle | None) = None,
+                 width: (str | None) = None,
                  # Inherited from BaseElement - except "type" which is hardcoded in
                  # super call.
-                 fallback: Optional[str] = None,
-                 separator: Optional[bool] = None,
-                 spacing: Optional[Union[str, Spacing]] = None, visible: bool = True,
-                 id: Optional[str] = None, requires: Optional[dict] = None,
+                 fallback: (str | None) = None,
+                 separator: (bool | None) = None,
+                 spacing: (str | Spacing | None) = None, visible: bool = True,
+                 id: (str | None) = None, requires: (dict | None) = None,
                  *args, **kwargs) -> None:
         super().__init__("Image", fallback, height, separator, spacing,
                          visible, id, requires, *args, **kwargs)
@@ -90,7 +90,7 @@ class Image(BaseElement):
 
 
 class MediaSource(BaseObject):
-    def __init__(self, url: str, mime_type: Optional[str] = None, *args, **kwargs):
+    def __init__(self, url: str, mime_type: (str | None) = None, *args, **kwargs):
         super(MediaSource, self).__init__(*args, **kwargs)
         self.url = url
 
@@ -109,15 +109,15 @@ class MediaSource(BaseObject):
 class Media(BaseElement):
     def __init__(self,
                  # Items from Media
-                 sources: List[MediaSource], poster: Optional[str] = None,
-                 alt_text: Optional[str] = None,
+                 sources: list[MediaSource], poster: (str | None) = None,
+                 alt_text: (str | None) = None,
                  # Inherited from BaseElement - except "type" which is hardcoded in
                  # super call.
-                 fallback: Optional[str] = None,
-                 height: Optional[Union[str, BlockElementHeight]] = None,
-                 separator: Optional[bool] = None,
-                 spacing: Optional[Union[str, Spacing]] = None, visible: bool = True,
-                 id: Optional[str] = None, requires: Optional[dict] = None,
+                 fallback: (str | None) = None,
+                 height: (str | BlockElementHeight) = None,
+                 separator: (bool | None) = None,
+                 spacing: (str | Spacing | None) = None, visible: bool = True,
+                 id: (str | None) = None, requires: (dict | None) = None,
                  *args, **kwargs) -> None:
         super(Media, self).__init__("Media", fallback, height, separator, spacing, visible,
                                     id, requires, *args, **kwargs)
@@ -129,12 +129,12 @@ class Media(BaseElement):
 
 
 class TextRun(BaseObject):
-    def __init__(self, text: str, color: Optional[Colors] = None,
-                 font_type: Optional[FontType] = None, highlight: Optional[bool] = None,
-                 subtle: Optional[bool] = None, italic: Optional[bool] = None,
-                 select_action: Optional[Union[Execute, OpenUrl, Submit, ToggleVisibility]] = None,
-                 size: Optional[FontSize] = None, strikethrough: Optional[bool] = None,
-                 underline: Optional[bool] = None, weight: Optional[FontWeight] = None,
+    def __init__(self, text: str, color: (Colors | None) = None,
+                 font_type: (FontType | None) = None, highlight: (bool | None) = None,
+                 subtle: (bool | None) = None, italic: (bool | None) = None,
+                 select_action: (Execute | OpenUrl | Submit | ToggleVisibility | None) = None,
+                 size: (FontSize | None) = None, strikethrough: (bool | None) = None,
+                 underline: (bool | None) = None, weight: (FontWeight | None) = None,
                  *args, **kwargs):
         super(TextRun, self).__init__(*args, **kwargs)
         self.text = text
@@ -163,15 +163,15 @@ class TextRun(BaseObject):
 class RichTextBlock(BaseElement):
     def __init__(self,
                  # Items from RichTextBlock
-                 inlines: list[Union[str, TextRun]],
-                 horizontal_alignment: Optional[HorizontalAlignment] = None,
+                 inlines: list[str | TextRun],
+                 horizontal_alignment: (HorizontalAlignment | None) = None,
                  # Inherited from BaseElement - except "type" which is hardcoded in
                  # super call.
-                 fallback: Optional[str] = None,
-                 height: Optional[Union[str, BlockElementHeight]] = None,
-                 separator: Optional[bool] = None,
-                 spacing: Optional[Union[str, Spacing]] = None, visible: bool = True,
-                 id: Optional[str] = None, requires: Optional[dict] = None,
+                 fallback: (str | None) = None,
+                 height: (str | BlockElementHeight | None) = None,
+                 separator: (bool | None) = None,
+                 spacing: (str | Spacing | None) = None, visible: bool = True,
+                 id: (str | None) = None, requires: (dict | None) = None,
                  *args, **kwargs) -> None:
         super(RichTextBlock, self).__init__("RichTextBlock", fallback, height, separator, spacing,
                                             visible, id, requires, *args, **kwargs)

@@ -1,25 +1,25 @@
+from __future__ import annotations
+
 from .base import BaseInput, BaseObject
 from .enums import TextInputStyle, ChoiceInputStyle
 
 from .actions import Execute, Submit, OpenUrl, ToggleVisibility
 
-from typing import Optional, Union
-
 
 class Text(BaseInput):
     def __init__(self,
                  # Objects for Text input specifically
-                 id: str, multiline: Optional[bool] = None, max_length: Optional[int] = None,
-                 placeholder: Optional[str] = None, regex: Optional[str] = None,
-                 style: Optional[TextInputStyle] = None,
-                 inline_action: Optional[Union[Execute, Submit, OpenUrl, ToggleVisibility]] = None,
-                 value: Optional[str] = None,
+                 id: str, multiline: (bool | None) = None, max_length: (int | None) = None,
+                 placeholder: (str | None) = None, regex: (str | None) = None,
+                 style: (TextInputStyle | None) = None,
+                 inline_action: (Execute | Submit | OpenUrl | ToggleVisibility | None) = None,
+                 value: (str | None) = None,
                  # Inherited arguments from SuperClass.
-                 error_message: Optional[str] = None, required: bool = False,
-                 label: Optional[str] = None, fallback: Optional[str] = None,
-                 height: Optional[str] = None, separator: Optional[bool] = False,
-                 spacing: Optional[str] = None, visible: bool = True,
-                 requires: Optional[dict] = None, *args, **kwargs) -> None:
+                 error_message: (str | None) = None, required: bool = False,
+                 label: (str | None) = None, fallback: (str | None) = None,
+                 height: (str | None) = None, separator: (bool | None) = False,
+                 spacing: (str | None) = None, visible: bool = True,
+                 requires: (dict | None) = None, *args, **kwargs) -> None:
         super(Text, self).__init__("Input.Text", error_message, required, label,
                                    fallback, height, separator, spacing, visible, requires,
                                    *args, **kwargs)
@@ -49,14 +49,14 @@ class Text(BaseInput):
 class Number(BaseInput):
     def __init__(self,
                  # Number items
-                 id: str, max: Optional[int] = None, min: Optional[int] = None,
-                 placeholder: Optional[str] = None, value: Optional[int] = None,
+                 id: str, max: (int | None) = None, min: (int | None) = None,
+                 placeholder: (str | None) = None, value: (int | None) = None,
                  # Inherited arguments from SuperClass.
-                 error_message: Optional[str] = None, required: bool = False,
-                 label: Optional[str] = None, fallback: Optional[str] = None,
-                 height: Optional[str] = None, separator: Optional[bool] = False,
-                 spacing: Optional[str] = None, visible: bool = True,
-                 requires: Optional[dict] = None, *args, **kwargs) -> None:
+                 error_message: (str | None) = None, required: bool = False,
+                 label: (str | None) = None, fallback: (str | None) = None,
+                 height: (str | None) = None, separator: (bool | None) = False,
+                 spacing: (str | None) = None, visible: bool = True,
+                 requires: (dict | None) = None, *args, **kwargs) -> None:
         super(Number, self).__init__("Input.Number", error_message, required, label,
                                    fallback, height, separator, spacing, visible, requires,
                                    *args, **kwargs)
@@ -78,14 +78,14 @@ class Number(BaseInput):
 class Date(BaseInput):
     def __init__(self,
                  # Date objects
-                 id: str, max: Optional[str] = None, min: Optional[str] = None,
-                 placeholder: Optional[str] = None, value: Optional[str] = None,
+                 id: str, max: (str | None) = None, min: (str | None) = None,
+                 placeholder: (str | None) = None, value: (str | None) = None,
                  # Inherited arguments from SuperClass.
-                 error_message: Optional[str] = None, required: bool = False,
-                 label: Optional[str] = None, fallback: Optional[str] = None,
-                 height: Optional[str] = None, separator: Optional[bool] = False,
-                 spacing: Optional[str] = None, visible: bool = True,
-                 requires: Optional[dict] = None, *args, **kwargs) -> None:
+                 error_message: (str | None) = None, required: bool = False,
+                 label: (str | None) = None, fallback: (str | None) = None,
+                 height: (str | None) = None, separator: (bool | None) = False,
+                 spacing: (str | None) = None, visible: bool = True,
+                 requires: (dict | None) = None, *args, **kwargs) -> None:
         super(Date, self).__init__("Input.Date", error_message, required, label,
                                    fallback, height, separator, spacing, visible, requires,
                                    *args, **kwargs)
@@ -106,14 +106,14 @@ class Date(BaseInput):
 class Time(BaseInput):
     def __init__(self,
                  # Time objects
-                 id: str, max: Optional[str] = None, min: Optional[str] = None,
-                 placeholder: Optional[str] = None, value: Optional[str] = None,
+                 id: str, max: (str | None) = None, min: (str | None) = None,
+                 placeholder: (str | None) = None, value: (str | None) = None,
                  # Inherited arguments from SuperClass.
-                 error_message: Optional[str] = None, required: bool = False,
-                 label: Optional[str] = None, fallback: Optional[str] = None,
-                 height: Optional[str] = None, separator: Optional[bool] = False,
-                 spacing: Optional[str] = None, visible: bool = True,
-                 requires: Optional[dict] = None, *args, **kwargs) -> None:
+                 error_message: (str | None) = None, required: bool = False,
+                 label: (str | None) = None, fallback: (str | None) = None,
+                 height: (str | None) = None, separator: (bool | None) = False,
+                 spacing: (str | None) = None, visible: bool = True,
+                 requires: (dict | None) = None, *args, **kwargs) -> None:
         super(Time, self).__init__("Input.Time", error_message, required, label,
                                    fallback, height, separator, spacing, visible, requires,
                                    *args, **kwargs)
@@ -134,15 +134,15 @@ class Time(BaseInput):
 class Toggle(BaseInput):
     def __init__(self,
                  # Toggle items
-                 title: str, id: str, value: Optional[bool] = None,
-                 value_off: Optional[str] = None, value_on: Optional[str] = None,
-                 wrap: Optional[bool] = None,
+                 title: str, id: str, value: (bool | None) = None,
+                 value_off: (str | None) = None, value_on: (str | None) = None,
+                 wrap: (bool | None) = None,
                  # Inherited arguments from SuperClass.
-                 error_message: Optional[str] = None, required: bool = False,
-                 label: Optional[str] = None, fallback: Optional[str] = None,
-                 height: Optional[str] = None, separator: Optional[bool] = False,
-                 spacing: Optional[str] = None, visible: bool = True,
-                 requires: Optional[dict] = None, *args, **kwargs) -> None:
+                 error_message: (str | None) = None, required: bool = False,
+                 label: (str | None) = None, fallback: (str | None) = None,
+                 height: (str | None) = None, separator: (bool | None) = False,
+                 spacing: (str | None) = None, visible: bool = True,
+                 requires: (dict | None) = None, *args, **kwargs) -> None:
         super(Toggle, self).__init__("Input.Toggle", error_message, required, label,
                                      fallback, height, separator, spacing, visible, requires,
                                      *args, **kwargs)
@@ -168,16 +168,16 @@ class Choice(BaseObject):
 class ChoiceSet(BaseObject):
     def __init__(self,
                  # Objects for ChoiceSet
-                 id: str, choices: Optional[list[Choice]] = None,
-                 multiselect: Optional[bool] = None, style: Optional[ChoiceInputStyle] = None,
-                 value: Optional[str] = None, placeholder: Optional[str] = None,
-                 wrap: Optional[str] = None,
+                 id: str, choices: (list[Choice] | None) = None,
+                 multiselect: (bool | None) = None, style: (ChoiceInputStyle | None) = None,
+                 value: (str | None) = None, placeholder: (str | None) = None,
+                 wrap: (str | None) = None,
                  # Inherited arguments from SuperClass.
-                 error_message: Optional[str] = None, required: bool = False,
-                 label: Optional[str] = None, fallback: Optional[str] = None,
-                 height: Optional[str] = None, separator: Optional[bool] = False,
-                 spacing: Optional[str] = None, visible: bool = True,
-                 requires: Optional[dict] = None, *args, **kwargs) -> None:
+                 error_message: (str | None) = None, required: bool = False,
+                 label: (str | None) = None, fallback: (str | None) = None,
+                 height: (str | None) = None, separator: (bool | None) = False,
+                 spacing: (str | None) = None, visible: bool = True,
+                 requires: (dict | None) = None, *args, **kwargs) -> None:
         super(ChoiceSet, self).__init__("Input.ChoiceSet", error_message, required, label,
                                         fallback, height, separator, spacing, visible, requires,
                                         *args, **kwargs)

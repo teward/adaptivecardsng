@@ -1,12 +1,8 @@
-import sys
-if (3, 7) <= sys.version_info < (3, 9):
-    from __future__ import annotations
+from __future__ import annotations
 
 from .base import BaseAction, BaseObject
 from .cards import AdaptiveCard
 from .enums import ActionStyle, ActionMode, AssociatedInputs
-
-from typing import Optional, Union, List
 
 
 class OpenUrl(BaseAction):
@@ -14,12 +10,11 @@ class OpenUrl(BaseAction):
                  # OpenURL items
                  url: str,
                  # BaseAction Inherited
-                 title: Optional[str] = None,
-                 icon_url: Optional[str] = None,
-                 id: Optional[str] = None, style: Optional[Union[str, ActionStyle]] = None,
-                 fallback: Optional[str] = None, tooltip: Optional[str] = None,
-                 enabled: bool = True, mode: Optional[Union[str, ActionMode]] = None,
-                 requires: Optional[dict] = None, *args, **kwargs):
+                 title: (str | None) = None, icon_url: (str | None) = None,
+                 id: (str | None) = None, style: (str | ActionStyle | None) = None,
+                 fallback: (str | None) = None, tooltip: (str | None) = None,
+                 enabled: bool = True, mode: (str | ActionMode | None) = None,
+                 requires: (dict | None) = None, *args, **kwargs):
         super(OpenUrl, self).__init__("Action.OpenURL", title, icon_url, id, style,
                                       fallback, tooltip, enabled, mode, requires,
                                       *args, **kwargs)
@@ -29,18 +24,18 @@ class OpenUrl(BaseAction):
 class Submit(BaseAction):
     def __init__(self,
                  # Submit items
-                 data: Optional[Union[str, object]] = None,
-                 associated_inputs: Optional[AssociatedInputs] = AssociatedInputs.auto,
+                 data: (str | object) = None,
+                 associated_inputs: (AssociatedInputs | None) = AssociatedInputs.auto,
                  # BaseAction Inherited
-                 title: Optional[str] = None,
-                 icon_url: Optional[str] = None,
-                 id: Optional[str] = None, style: Optional[Union[str, ActionStyle]] = None,
-                 fallback: Optional[str] = None, tooltip: Optional[str] = None,
-                 enabled: bool = True, mode: Optional[Union[str, ActionMode]] = None,
-                 requires: Optional[dict] = None, *args, **kwargs):
+                 title: (str | None) = None,
+                 icon_url: (str | None) = None,
+                 id: (str | None) = None, style: (str | ActionStyle | None) = None,
+                 fallback: (str | None) = None, tooltip:(str | None) = None,
+                 enabled: bool = True, mode: (str | ActionMode | None) = None,
+                 requires: (dict | None) = None, *args, **kwargs):
         super(Submit, self).__init__("Action.Submit", title, icon_url, id, style,
-                                      fallback, tooltip, enabled, mode, requires,
-                                      *args, **kwargs)
+                                     fallback, tooltip, enabled, mode, requires,
+                                     *args, **kwargs)
         if data:
             self.data = data
 
@@ -51,14 +46,14 @@ class Submit(BaseAction):
 class ShowCard(BaseAction):
     def __init__(self,
                  # ShowCard items
-                 card: Optional[AdaptiveCard] = None,
+                 card: (AdaptiveCard | None) = None,
                  # BaseAction Inherited
-                 title: Optional[str] = None,
-                 icon_url: Optional[str] = None,
-                 id: Optional[str] = None, style: Optional[Union[str, ActionStyle]] = None,
-                 fallback: Optional[str] = None, tooltip: Optional[str] = None,
-                 enabled: bool = True, mode: Optional[Union[str, ActionMode]] = None,
-                 requires: Optional[dict] = None, *args, **kwargs):
+                 title: (str | None) = None,
+                 icon_url: (str | None) = None,
+                 id: (str | None) = None, style: (str | ActionStyle | None) = None,
+                 fallback: (str | None) = None, tooltip: (str | None) = None,
+                 enabled: bool = True, mode: (str | ActionMode | None) = None,
+                 requires: (dict | None) = None, *args, **kwargs):
         super(ShowCard, self).__init__("Action.ShowCard", title, icon_url, id, style,
                                        fallback, tooltip, enabled, mode, requires,
                                        *args, **kwargs)
@@ -67,7 +62,7 @@ class ShowCard(BaseAction):
 
 
 class TargetElement(BaseObject):
-    def __init__(self, element_id: str, visible: Optional[bool] = None, *args, **kwargs):
+    def __init__(self, element_id: str, visible: (bool | None) = None, *args, **kwargs):
         super(TargetElement, self).__init__(*args, **kwargs)
         self.elementId = element_id
         if visible:
@@ -79,12 +74,12 @@ class ToggleVisibility(BaseAction):
                  # ToggleVisibility items
                  target_elements: list[TargetElement],
                  # BaseAction Inherited
-                 title: Optional[str] = None,
-                 icon_url: Optional[str] = None,
-                 id: Optional[str] = None, style: Optional[Union[str, ActionStyle]] = None,
-                 fallback: Optional[str] = None, tooltip: Optional[str] = None,
-                 enabled: bool = True, mode: Optional[Union[str, ActionMode]] = None,
-                 requires: Optional[dict] = None, *args, **kwargs):
+                 title: (str | None) = None,
+                 icon_url: (str | None) = None,
+                 id: (str | None) = None, style: (str | ActionStyle | None) = None,
+                 fallback: (str | None) = None, tooltip: (str | None) = None,
+                 enabled: bool = True, mode: (str | ActionMode | None) = None,
+                 requires: (dict | None) = None, *args, **kwargs):
         super(ToggleVisibility, self).__init__(
             "Action.ToggleVisibility", title, icon_url, id, style,
             fallback, tooltip, enabled, mode, requires,
@@ -95,16 +90,16 @@ class ToggleVisibility(BaseAction):
 class Execute(BaseAction):
     def __init__(self,
                  # Execute items
-                 verb: Optional[str] = None,
-                 data: Optional[Union[str, object]] = None,
-                 associated_inputs: Optional[AssociatedInputs] = None,
+                 verb: (str | None) = None,
+                 data: (str | object | None) = None,
+                 associated_inputs: (AssociatedInputs | None) = None,
                  # BaseAction Inherited
-                 title: Optional[str] = None,
-                 icon_url: Optional[str] = None,
-                 id: Optional[str] = None, style: Optional[Union[str, ActionStyle]] = None,
-                 fallback: Optional[str] = None, tooltip: Optional[str] = None,
-                 enabled: bool = True, mode: Optional[Union[str, ActionMode]] = None,
-                 requires: Optional[dict] = None, *args, **kwargs):
+                 title: (str | None) = None,
+                 icon_url: (str | None) = None,
+                 id: (str | None) = None, style: (str | ActionStyle | None) = None,
+                 fallback: (str | None) = None, tooltip: (str | None) = None,
+                 enabled: bool = True, mode: (str | ActionMode | None) = None,
+                 requires: (dict | None) = None, *args, **kwargs):
         super(Execute, self).__init__(
             "Action.Execute", title, icon_url, id, style,
             fallback, tooltip, enabled, mode, requires,
