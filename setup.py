@@ -13,6 +13,7 @@ setup(
     include_package_data=True,
     author='Thomas Ward',
     author_email='teward@thomas-ward.net',
+    url='https://github.com/teward/adaptivecardsng',
     description="Python library to generate AdaptiveCard objects and their JSON code.",
     long_description=long_description,
     long_description_content_type='text/markdown',
