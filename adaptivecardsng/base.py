@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import json
 import enum
 
@@ -25,7 +27,7 @@ class BaseObject:
     def __delitem__(self, key) -> None:
         del self.__dict__[key]
 
-    def __iter__(self) -> Iterable:
+    def __iter__(self) -> iter:
         return iter(self.__dict__)
 
     def __len__(self) -> int:
@@ -48,11 +50,11 @@ class BaseObject:
 
 
 class BaseElement(BaseObject):
-    def __init__(self, element_type: Optional[str] = None, fallback: Optional[str] = None,
-                 height: Optional[Union[str, BlockElementHeight]] = None,
-                 separator: Optional[bool] = None,
-                 spacing: Optional[Union[str, Spacing]] = None, visible: bool = True,
-                 id: Optional[str] = None, requires: Optional[dict] = None,
+    def __init__(self, element_type: (str | None) = None, fallback: (str | None) = None,
+                 height: (str | BlockElementHeight | None) = None,
+                 separator: (bool | None) = None,
+                 spacing: (str | Spacing | None) = None, visible: bool = True,
+                 id: (str | None) = None, requires: (dict | None) = None,
                  *args, **kwargs):
         super().__init__(*args, **kwargs)
         if element_type:
@@ -81,12 +83,12 @@ class BaseElement(BaseObject):
 
 
 class BaseAction(BaseObject):
-    def __init__(self, action_type: str, title: Optional[str] = None,
-                 icon_url: Optional[str] = None,
-                 id: Optional[str] = None, style: Optional[Union[str, ActionStyle]] = None,
-                 fallback: Optional[str] = None, tooltip: Optional[str] = None,
-                 enabled: bool = True, mode: Optional[Union[str, ActionMode]] = None,
-                 requires: Optional[dict] = None, *args, **kwargs) -> None:
+    def __init__(self, action_type: str, title: (str | None) = None,
+                 icon_url: (str | None) = None,
+                 id: (str | None) = None, style: (str | ActionStyle | None) = None,
+                 fallback: (str | None) = None, tooltip: (str | None) = None,
+                 enabled: bool = True, mode: (str | ActionMode | None) = None,
+                 requires: (dict | None) = None, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
         self.type = action_type
@@ -120,11 +122,11 @@ class BaseAction(BaseObject):
 
 
 class BaseInput(BaseObject):
-    def __init__(self, input_type: str, error_message: Optional[str] = None, required: bool = False,
-                 label: Optional[str] = None, fallback: Optional[str] = None,
-                 height: Optional[str] = None, separator: Optional[bool] = False,
-                 spacing: Optional[str] = None, visible: bool = True,
-                 requires: Optional[dict] = None, *args, **kwargs) -> None:
+    def __init__(self, input_type: str, error_message: (str | None) = None, required: bool = False,
+                 label: (str | None) = None, fallback: (str | None) = None,
+                 height: (str | None) = None, separator: (bool | None) = False,
+                 spacing: (str | None) = None, visible: bool = True,
+                 requires: (dict | None) = None, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
         self.type = input_type
@@ -149,12 +151,12 @@ class BaseInput(BaseObject):
 
 
 class BaseContainer(BaseObject):
-    def __init__(self, container_type: str, fallback: Optional[str] = None,
-                 height: Optional[Union[str, BlockElementHeight]] = None,
-                 separator: Optional[bool] = False,
-                 spacing: Optional[Union[str, Spacing]] = None,
-                 id: Optional[str] = None, visible: bool = True,
-                 requires: Optional[dict] = None, *args, **kwargs) -> None:
+    def __init__(self, container_type: str, fallback: (str | None) = None,
+                 height: (str | BlockElementHeight | None) = None,
+                 separator: (bool | None) = False,
+                 spacing: (str | Spacing | None) = None,
+                 id: (str | None) = None, visible: bool = True,
+                 requires: (dict | None) = None, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self.type = container_type
         if fallback:
@@ -174,12 +176,12 @@ class BaseContainer(BaseObject):
 
 
 class BaseSet(BaseObject):
-    def __init__(self, set_type: str, fallback: Optional[str] = None,
-                 height: Optional[Union[str, BlockElementHeight]] = None,
-                 separator: Optional[bool] = None,
-                 spacing: Optional[Union[str, Spacing]] = None,
-                 id: Optional[str] = None, visible: bool = True,
-                 requires: Optional[dict] = None, *args, **kwargs):
+    def __init__(self, set_type: str, fallback: (str | None) = None,
+                 height: (str | BlockElementHeight | None) = None,
+                 separator: (bool | None) = None,
+                 spacing: (str | Spacing | None) = None,
+                 id: (str | None) = None, visible: bool = True,
+                 requires: (dict | None) = None, *args, **kwargs):
         super(BaseSet, self).__init__(*args, **kwargs)
         self.type = set_type
         if fallback:
