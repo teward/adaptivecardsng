@@ -165,7 +165,8 @@ This generates this output:
 And that in turn, when rendered in Teams after properly being transmitted and formatted as a 
 Teams-compatible message looks something like this:
 
-(IMAGE)
+![adaptivecardsng_teams_rendering](https://user-images.githubusercontent.com/327952/192674758-8cbfd8be-7b5d-430c-a63f-8a369bb1e657.png)
+
 
 <!--
 ### Installation
