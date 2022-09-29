@@ -1,9 +1,7 @@
 from __future__ import annotations
 
-from .base import BaseObject
+from .base import BaseObject, BaseAction
 from .enums import ImageFillMode, HorizontalAlignment, VerticalAlignment
-
-from .actions import Execute
 
 
 # Types are object definitions which can be used in many places -
@@ -36,7 +34,7 @@ class BackgroundImage(BaseObject):
 
 
 class Refresh(BaseObject):
-    def __init__(self, execute: (Execute | None) = None,
+    def __init__(self, execute: (BaseAction | None) = None,
                  user_ids: (dict[str] | None) = None,
                  *args, **kwargs) -> None:
         super(Refresh, self).__init__(*args, **kwargs)

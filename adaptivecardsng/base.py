@@ -62,7 +62,8 @@ class BaseObject:
             raise ValueError("Specified key already exists.")
 
     def as_json(self) -> str:
-        return json.dumps(self.__dict__, sort_keys=True, indent=2, cls=BaseObjectJSONEncoder)
+        return json.dumps(self.__dict__, sort_keys=True, indent=2,
+                          separators=(',', ':'), cls=BaseObjectJSONEncoder)
 
 
 class BaseElement(BaseObject):

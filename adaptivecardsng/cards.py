@@ -1,7 +1,6 @@
 from __future__ import annotations
 
-from .base import BaseObject, BaseElement, BaseAction
-from .actions import Execute, OpenUrl, Submit, ToggleVisibility
+from .base import BaseObject, BaseAction
 from .types import Refresh, Authentication, BackgroundImage
 from .enums import VerticalAlignment
 
@@ -19,7 +18,7 @@ class AdaptiveCard(BaseObject):
                  authentication: (Authentication | None) = None,
                  body: (list[BaseObject] | None) = None,
                  actions: (BaseAction | None) = None,
-                 select_action: (Execute | OpenUrl | Submit | ToggleVisibility | None) = None,
+                 select_action: (BaseAction | None) = None,
                  fallback_text: (str | None) = None,
                  background_image: (BackgroundImage | str | None) = None,
                  min_height: (str | None) = None, rtl: (bool | None) = None,
