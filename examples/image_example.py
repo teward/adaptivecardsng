@@ -1,6 +1,3 @@
-import base64
-import mimetypes
-
 from adaptivecardsng.elements import Image, ImageSize
 from adaptivecardsng.elements import TextBlock
 from adaptivecardsng.containers import Container
