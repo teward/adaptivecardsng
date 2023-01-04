@@ -15,7 +15,7 @@ class OpenUrl(BaseAction):
                  fallback: (str | None) = None, tooltip: (str | None) = None,
                  enabled: bool = True, mode: (str | ActionMode | None) = None,
                  requires: (dict | None) = None, *args, **kwargs):
-        super(OpenUrl, self).__init__("Action.OpenURL", title, icon_url, id, style,
+        super(OpenUrl, self).__init__("Action.OpenUrl", title, icon_url, id, style,
                                       fallback, tooltip, enabled, mode, requires,
                                       *args, **kwargs)
         self.url = url
